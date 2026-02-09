@@ -1,0 +1,1062 @@
+openApi: 3.0.0
+info:
+    title: Alquiler de Monopatines
+    description: Programa dedicado a la administracion y alquiler de Monopatines.
+    version: 1.0.0
+
+#SERVIDORES
+servers:
+  -url: http://localhost:8088/
+  description: Microservicio administrador.
+  -url: http://localhost:8081/
+  description: Microservicio usuario.
+  -url: http://localhost:8082/
+  description: Microservicio monopatin.
+  -url: http://localhost:8083/
+  description: Microservicio parada.
+  -url: http://localhost:8084/
+  description: Microservicio viaje.
+  -url: http://localhost:8085/
+  description: Microservicio cuenta.
+  -url: http://localhost:8087/
+  description: Microservicio tarifa.
+
+
+tags:
+  -name: administrador
+  description: Funcionalidades de control y reportes de la aplicación.
+
+  -name: Usuario
+  description: Gestión del perfil de usuario y funcionalidades de búsqueda
+
+  -name: Monopatin
+  description: Gestión de la flota de monopatines
+
+  -name: Parada
+  description: Gestión de las paradas y ubicaciones.
+
+  -name: Viaje
+  description: Gestión de los viajes y pausas
+
+  -name: Cuenta
+  description: administracion de cuentas vinculadas a un usuario, gestion de saldo, etc.
+
+  -name: Tarifa
+  description: Gestión de precios y tarifas vigentes
+
+paths:
+  #MICROSERVICIO ADMINISTRADOR
+
+  #4a
+  /administrador/reportes/mantenimiento-uso:
+    get:
+      tags:
+        -Administrador
+      summary: Genera el reporte de uso de monopatines por kilómetros/tiempo
+      parameters:
+        -name: conPausas
+        in: query
+        required: true
+        schema:
+         type: boolean
+        description: booleano que decide si se incluyen o no los tiempos de pausa en el total
+      responses:
+        "200":
+          description: OK. Retorna la lista de métricas por monopatín.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ReporteMonopatinXKm'
+
+
+  #4b
+  /administrador/cuentas/anular/{id_cuenta}:
+    post:
+      tags:
+        -Administrador
+      summary: Anula una cuenta de un usuario dado su id
+
+      parameters:
+        -name: id_cuenta
+        in: path
+        required: true
+        schema:
+          type: string
+        description: id de la cuenta a anular
+      responses:
+       "200":
+         description: cuenta anulada exitosamente
+         content:
+           application/json:
+             schema:
+               $ref: '#/components/schemas/CuentaDTO'
+       "404":
+         description: cuenta no encontrada
+
+
+  #4c
+  /administrador/reportes/top-monopatines:
+    get:
+      tags:
+        -Administrador
+      summary: Consulta los monopatines con más de X viajes en un cierto año.
+      parameters:
+        -name: minViajes
+        in: query
+        required: true
+        schema:
+          type: integer
+        description: minimo de viajes para la buqueda
+        -name: year
+        in: query
+        required: true
+        schema:
+          type: integer
+        description: anio sobre el cual realizar la busqueda
+      responses:
+          "200":
+            description: Lista de monopatines que cumplen el criterio.
+            content:
+                application/json:
+                  schema:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ReporteMonopatinContadorViajes'
+
+#4d
+  /administrador/total-facturado:
+    get:
+      tags:
+        -Administrador
+      summary: Consulta el total facturado en un rango de meses en un cierto año
+      parameters:
+        -name: anio
+        in: query
+        required: true
+        schema:
+          type: integer
+        description: anio sobre el cual realizar la busqueda
+        -name: mesInicio
+        in: query
+        required: true
+        schema:
+          type: integer
+        description: mes inicial
+        -name: mesFin
+        in: query
+        required: true
+        schema:
+          type: integer
+        description: mes final
+      responses:
+        "200":
+          description: OK. Retorna el valor Double total.
+          content:
+              application/json:
+                schema:
+                  type: number
+                  format: double
+
+#4e
+  /administrador/usuarios-que-mas-usan:
+    get:
+      tags:
+        -Administrador
+      summary: Consulta los usuarios que mas usan monopatines filtrados por rol y periodo
+      parameters:
+        -name: rol
+        in: query
+        required: true
+        schema:
+          type: string
+        description: tipo de usuario sobre el cual realizar la busqueda
+        -name: inicio
+        in: query
+        required: true
+        schema:
+          type: string
+          format: date
+        description: fecha inicio de la busqueda
+        -name: fin
+        in: query
+        required: true
+        schema:
+          type: string
+          format: date
+        description: fecha fin de la busqueda
+
+      responses:
+        "200":
+          description: Lista de usuarios y sus kilómetros recorridos.
+          content:
+              application/json:
+                schema:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/UsuarioUsoDTO'
+
+#4f
+  /administrador/ajuste:
+    post:
+      tags:
+         -Administrador
+      summary: realiza un ajuste de precios a partir de cierta fecha
+      parameters:
+        -name: fechaActivacion
+        in: query
+        required: true
+        schema:
+          type: string
+          format: date
+        description: fecha a partir de la cual se deben ajustar los precios
+      requestBody:
+        description: datos de la nueva tarifa
+        required: true
+        content:
+          application/json:
+            schemma:
+              $ref: '#/components/schemas/TarifaDTO'
+      responses:
+        "200":
+          description: Ajuste de tarifa registrado exitosamente.
+
+
+
+#MICROSERVICIO USUARIO
+
+  /usuarios/:
+    get:
+      tags:
+        -Usuario
+      summary: obtiene los datos de todos los usuarios
+      responses:
+        "200":
+          description: usuarios devueltos correctamente
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Usuario'
+
+  /usuarios/{id}:
+    get:
+      tags:
+        -Usuario
+      summary: obtiene datos de un usuario dado su id
+      parameters:
+        -name: id
+        in: path
+        required: true
+        schema:
+          type: string
+        description: id del usuario a buscar
+      responses:
+        "200":
+          description: Usuario encontrado correctamente.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Usuario'
+
+
+  /usuarios/registrar/:
+    post:
+      tags:
+        -Usuario
+      summary: Registra un usuario
+      parameters:
+        -name: nroCuenta
+        in: query
+        required: true
+        schema:
+          type: integer
+        description: numero de cuenta para asociar al usuario nuevo
+      requestBody:
+        description: datos del usuario a registrar
+        required: true
+        content:
+          application/json:
+            schemma:
+              $ref: '#/components/schemas/Usuario'
+      responses:
+        "200":
+          description: Usuario registrado exitosamente.
+
+
+
+#4g
+  /usuarios/cercanos:
+    get:
+      tags:
+        -Usuario
+      summary: obtiene un listado de los monopatines cercanos a mi zona
+      parameters:
+        -name: lat
+        in: query
+        required: true
+        schema:
+          type: number
+          format: double
+        description: latitud en la que se encuenta el usuario
+        -name: lng
+        in: query
+        required: true
+        schema:
+          type: number
+          format: double
+        description: longitud en la que se encuenta el usuario
+        -name: radiokm
+        in: query
+        required: true
+        schema:
+          type: number
+          format: double
+        description: radio de busqueda
+      responses:
+        "200":
+          description: OK. Lista de monopatines encontrados.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/monopatinDto'
+          "204":
+            description: No se encontraron monopatines disponibles en el radio.
+          "404":
+            description: Recurso no encontrado (ej., error de servicio).
+
+#4f
+  /usuarios/{user_id}/reporteUso:
+    get:
+      tags:
+        -Usuario
+      summary: reporte de uso los monopatines en un período para un usuario, y opcionalmente si otros usuarios relacionados a esta cuenta los usaron.
+      parameters:
+        -name: user_id
+        in: path
+        required: true
+        schema:
+          type: string
+        description: id del usuario
+        -name: fechaIniico
+        in: query
+        required: true
+        schema:
+          type: string
+          format: date
+        description: fecha de inicio de la busqueda
+        -name: fechaFin
+        in: query
+        required: true
+        schema:
+          type: string
+          format: date
+        description: fecha de fin de la busqueda
+        -name: otrosUsuarios
+        in: query
+        required: false
+        schema:
+          type: boolean
+        description: Si se debe incluir el uso de monopatines de usuarios asociados a la cuenta.
+
+      responses:
+        "200":
+          description: OK. Reporte de uso consolidado.
+          content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/reporteUsoDto'
+
+        "404":
+          description: Usuario no encontrado.
+
+
+#MICROSERVICIO MONOPATIN
+  #faltan delete y update
+
+  /monopatines/:
+    get:
+      tags:
+        -Monopatin
+      summary: obtiene un listado de todos los monopatines
+      responses:
+        "200":
+          description: listado obtenido exitosamente
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/Monopatin'
+
+  /monopatines/{id}:
+    get:
+      tags:
+        -Monopatin
+      summary: obtiene la informacion de un monopatin dado su id
+      parameters:
+        -name: id
+        in: path
+        required: true
+        schema:
+          type: string
+        description: id del monopatin a buscar
+        responses:
+          "200":
+            description: monopatin encontrado exitosamente
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Monopatin'
+          "404":
+            description: monopatin no encontrado
+
+  /monopatines:
+    post:
+      tags:
+        -Monopatin
+      summary: crea un monopatin
+      requestBody:
+        description: datos del monopatin a crear
+        required: true
+        content:
+          application/json:
+            schemma:
+              $ref: '#/components/schemas/Monopatin'
+        responses:
+          "200":
+            description: monopatin creado exitosamente
+
+  /monopatines/{id}/estado/{estado}:
+    post:
+      tags:
+        -Monopatin
+      summary: actualiza el estado de un monopatin
+      parameters:
+        -name: id
+        in: path
+        required: true
+        schema:
+          type: string
+        description: id del monopatin a actualizar
+        -name: estado
+        in: path
+        required: true
+        schema:
+          type: string
+        description: estado para modificar
+      responses:
+        "200":
+          description: monopatin actualizado exitosamente
+        "404":
+          description: monopatin no encontrado
+/monopatines/{id}:
+  put:
+    tags:
+      - Monopatin
+    summary: Actualiza un monopatín completo.
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+    requestBody:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Monopatin'
+    responses:
+      "200":
+        description: Actualizado.
+
+  /monopatines/{id}/evaluar-mantenimiento:
+    put:
+      tags:
+        - Monopatin
+      summary: Evalúa si el monopatín necesita mantenimiento y actualiza estado.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Evaluación completada.
+
+  /monopatines/en-paradas:
+    post:
+      tags:
+        - Monopatin
+      summary: Obtiene monopatines ubicados en una lista de paradas.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                type: string
+      responses:
+        "200":
+          description: Lista de monopatines en esas paradas.
+
+
+##MICROSERVIO PARADAS
+
+  /paradas/:
+    get:
+      tags:
+        -Parada
+      summary: obtiene los datos de todas las paradas
+      responses:
+        "200":
+          description: paradas devueltas correctamente
+
+  /paradas/{id}:
+    get:
+      tags:
+        -Paradas
+      summary: obtiene datos de una parada dado su id
+      parameters:
+        -name: id
+        in: path
+        required: true
+        schema:
+          type: string
+        description: id de la parada a buscar
+      responses:
+        "200":
+          description: Parada encontrada correctamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Parada'
+
+  /paradas:
+    post:
+      tags:
+        -Parada
+      summary: crea una parada
+      requestBody:
+        description: datos de la parada a crear
+        required: true
+        content:
+          application/json:
+            schemma:
+              $ref: '#/components/schemas/Parada'
+        responses:
+          "200":
+            description: parada creada exitosamente
+
+  /paradas/{idParada}/ubicar/{idMonopatin}:
+    post:
+      tags:
+        -Parada
+      summary: Ubica un monopatin en una parada
+      parameters:
+        -name: idParada
+        in: path
+        required: true
+        schema:
+          type: string
+        description: id de la parada donde ubicar el monopatin
+        -name: idMonopatin
+        in: path
+        required: true
+        schema:
+          type: string
+        description: id del monopatin que quiero ubicar
+      responses:
+        "200":
+          description: monopatin ubicado exitosamente
+        "404":
+          description: parada o monopatin no encontrado
+
+
+  #MICROSERVICIO VIAJE
+
+  /viajes/:
+    get:
+      tags:
+        -Viaje
+      summary: obtiene un listado de todos los viajes
+      responses:
+        "200":
+          description: listado obtenido exitosamente
+
+  /viajes/{id}:
+    get:
+      tags:
+        -Viaje
+      summary: obtiene la informacion de un viaje dado su id
+      parameters:
+        -name: id
+        in: path
+        required: true
+        schema:
+          type: string
+        description: id del viaje a buscar
+        responses:
+          "200":
+            description: viaje encontrado exitosamente
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/Viaje'
+          "404":
+            description: viaje no encontrado
+
+  /viajes/iniciar:
+    post:
+      tags:
+        -Viaje
+      summary: inicia un viaje
+      requestBody:
+        description: datos del viaje
+        required: true
+        content:
+          application/json:
+            schemma:
+              $ref: '#/components/schemas/Viaje'
+        responses:
+          "200":
+            description: viaje iniciado exitosamente
+
+  /viajes/byUser/{userId}:
+    get:
+      tags:
+        -Viaje
+      summary: obtiene un listado de viajes dado un id de usuario
+      parameters:
+        -name: userId
+        in: path
+        required: true
+        schema:
+          type: string
+        description: id del usuario del que quiero buscar sus viajes
+        responses:
+          "200":
+            description: listado devuelto.
+          "404":
+            description: usuario no encontrado
+
+  /viajes/reportes/monopatines-por-viajes:
+    get:
+      tags:
+       -Viaje
+      summary: genera reporte de monopatines más usados en un anio dado
+      parameters:
+        -name: year
+        in: query
+        required: true
+        schema:
+          type: integer
+        description: anio en el que realizar la busqueda
+        responses:
+          "200":
+            description: reporte generado exitosamente
+
+  /viajes/reporte-uso:
+    get:
+      tags:
+        -Viaje
+      summary: Obtiene el uso consolidado (tiempos y kilómetros) para una lista de usuarios en un período.
+      parameters:
+        - name: userIds
+          in: query
+          required: true
+          schema:
+            type: array
+            items:
+              type: string
+          description: Lista de IDs de usuario a incluir en la agregación (ej., userId1,userId2).
+        - name: fechaInicio
+          in: query
+          required: true
+          schema:
+            type: string
+            format: date
+          description: Fecha de inicio del período de búsqueda.
+        - name: fechaFin
+          in: query
+          required: true
+          schema:
+            type: string
+            format: date
+          description: Fecha de fin del período de búsqueda.
+    responses:
+          "200":
+            description: OK. Retorna el uso total agregado.
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/ReporteUsoDTO'
+
+/viajes/reportes/usuarios-uso:
+  get:
+    tags:
+      -Viaje
+    summary: obtiene un listado de usuarios que mas usaron los monopatines en un tiempo determinado
+
+    parameters:
+      - name: fechaInicio
+        in: query
+        required: true
+        schema:
+          type: string
+          format: date
+        description: Fecha de inicio del período de búsqueda.
+      - name: fechaFin
+        in: query
+        required: true
+        schema:
+          type: string
+          format: date
+        description: Fecha de fin del período de búsqueda.
+      - name: userIds
+        in: query
+        required: true
+        schema:
+        type: array
+        items:
+        type: string
+        description: Lista de IDs de usuario a incluir en la agregación
+
+        responses:
+          "200":
+            description: Retorna el listado correctamente
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/UsuariosUsoDTO'
+
+
+#/byMonopatin/{monopatinId}
+#finalizar/
+
+#MICROSERVICIO CUENTA
+  /cuenta/:
+    get:
+      tags:
+        -Cuenta
+      summary: obtiene un listado de todas las cuentas
+      responses:
+        "200":
+          description: listado obtenido exitosamente
+
+  /cuenta/{id}:
+    get:
+      tags:
+        -Cuenta
+      summary: obtiene la informacion de una cuenta dada su id
+      parameters:
+        -name: id
+        in: path
+        required: true
+        schema:
+          type: string
+        description: id de la cuenta a buscar
+        responses:
+          "200":
+            description: cuenta encontrada exitosamente
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/Cuenta'
+          "404":
+            description: cuenta no encontrada
+
+  /cuenta/by-user/{userId}:
+    get:
+      tags:
+        -Cuenta
+      summary: obtiene un listado cuentas asociadas a un id de usuario
+      parameters:
+        -name: id
+        in: path
+        required: true
+        schema:
+          type: string
+        description: id del usuario  a buscar
+        responses:
+          "200":
+            description: cuenta encontrada exitosamente
+          "404":
+            description: cuenta no encontrada
+  /cuenta:
+    post:
+      tags:
+        -Cuenta
+      summary: crea una cuenta
+      requestBody:
+        description: datos de la cuenta a crear
+        required: true
+        content:
+          application/json:
+            schemma:
+              $ref: '#/components/schemas/Cuenta'
+        responses:
+          "200":
+            description: cuenta creada exitosamente
+
+  /cuenta/cargarSaldo/{id}:
+    post:
+      tags:
+        -Cuenta
+      summary: carga saldo por medio de Mercado Pago a una cuenta dado su id
+      parameters:
+        -name: id
+        in: path
+        required: true
+        schema:
+          type: string
+        description: id de la cuenta a la que quiero cargarle saldo
+        -name: saldo
+        in: query
+        required: true
+        schema:
+          type: double
+        description: monto que quiero cargar a la cuenta
+        -name: tokenPago
+        in: query
+        required: true
+        schema:
+          type: string
+        description: token dado por MP para la validacion de la transaccion
+        responses:
+          "200":
+            description: carga realizada con exito
+          "404":
+            description: pago rechazado o cuenta no encontrada
+
+  cuenta/{id}/usuarios:
+    get:
+      tags:
+        -Cuenta
+      summary: obtiene un listado de usuarios asociados a la cuenta
+      parameters:
+      -name: id
+      in: path
+      required: true
+      schema:
+        type: string
+      description: id de la cuenta de la que quiero obtener los usuarios asociados
+      responses:
+        "200":
+          description: OK. Listado obtenido
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+
+#MICROSERVICIO TARIFA
+  /tarifa/:
+    get:
+      tags:
+        -Tarifa
+      summary: obtiene un listado de todas las tarifas
+      responses:
+        "200":
+          description: listado obtenido exitosamente
+
+  /tarifa/{id}:
+    get:
+      tags:
+        -Tarifa
+      summary: obtiene la informacion de una tarifa dada su id
+      parameters:
+        -name: id
+        in: path
+        required: true
+        schema:
+          type: string
+        description: id de la tarifa a buscar
+        responses:
+          "200":
+            description: tarifa encontrada exitosamente
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/Tarifa'
+          "404":
+            description: tarifa no encontrada
+  /tarifa:
+    post:
+      tags:
+        -Tarifa
+      summary: crea una tarifa
+      requestBody:
+        description: datos de la tarigfa a crear
+        required: true
+        content:
+          application/json:
+            schemma:
+              $ref: '#/components/schemas/Tarifa'
+        responses:
+          "200":
+            description: tarifa creada exitosamente
+
+  /tarifa/ajuste:
+    post:
+      tags:
+        -Tarifa
+      summary: realiza un ajuste de tarifas dada una fecha especifica
+      parameters:
+        - name: fechaActivacion
+          in: query
+          required: true
+          schema:
+            type: string
+            format: date
+          description: Fecha de activacion del ajuste
+      requestBody:
+        description: datos de la tarifa a modificar
+        required: true
+        content:
+          application/json:
+            schemma:
+              $ref: '#/components/schemas/Tarifa'
+      responses:
+        "200":
+          description: tarifa modificada exitosamente
+
+
+  /tarifa/vigente:
+    get:
+      tags:
+        -Tarifa
+      summary: obtiene la tarifa vigente para una fecha dada
+      parameters:
+        - name: fechaConsulta
+          in: query
+          required: true
+          schema:
+            type: string
+            format: date
+          description: Fecha de la consulta
+          responses:
+            "200":
+              description: tarifa modificada exitosamente
+              content:
+                application/json:
+                  schema:
+                    $ref: '#/components/schemas/Tarifa'
+
+
+components:
+  components:
+    schemas:
+      # DTOs
+      CuentaDTO:
+        type: object
+        properties:
+          nroCuenta: { type: string }
+          monto: { type: number, format: double }
+          estado: { type: boolean }
+          tipoCuenta: { type: string }
+
+      TarifaDTO:
+        type: object
+        properties:
+          valorComun: { type: number, format: double }
+          valorPremium: { type: number, format: double }
+          valorExtrapausa: { type: number, format: double }
+
+      ReporteMonopatinContadorViajes:
+        type: object
+        properties:
+          idMonopatin: { type: string }
+          cantidadViajes: { type: integer, format: int64 }
+
+      ReporteMonopatinXKm:
+        type: object
+        properties:
+          id: { type: string }
+          kmRecorridos: { type: number, format: float }
+          tiempoUsoSegundos: { type: integer, format: int64 }
+
+      UsuarioUsoDTO:
+        type: object
+        properties:
+          id: { type: string }
+          nombre: { type: string }
+          rol: { type: string }
+          kmRecorridos: { type: number, format: double }
+
+      monopatinDto:
+        type: object
+        properties:
+          id: { type: string }
+          estado: { type: string }
+          latitud: { type: number, format: double }
+          longitud: { type: number, format: double }
+          kmRecorridos: { type: number, format: double }
+          tiempoUso: { type: integer, format: int64 }
+          idParadaUbicacion: { type: string }
+
+      reporteUsoDto:
+        type: object
+        properties:
+          totalTiempoMinutos: { type: number, format: double }
+          totalTiempoConPausaMinutos: { type: number, format: double }
+          totalKilometros: { type: number, format: double }
+
+      # Entidades Completas (para respuestas generales)
+      Usuario:
+        type: object
+        properties:
+          id: { type: string }
+          nombre: { type: string }
+          mail: { type: string }
+          celular: { type: integer }
+          rol: { type: string }
+          cuentas: { type: array, items: { type: string } }
+
+      Cuenta:
+        type: object
+        properties:
+          nroCuenta: { type: string }
+          monto: { type: number, format: double }
+          estado: { type: boolean }
+          fechaAlta: { type: string, format: date-time }
+          tipoCuenta: { type: string }
+          usuarios: { type: array, items: { type: string } }
+
+      Monopatin:
+        type: object
+        properties:
+          id: { type: string }
+          estado: { type: string }
+          # ... otros campos
+
+      Parada:
+        type: object
+        properties:
+          id: { type: string }
+          nombre: { type: string }
+          ubicacion: { type: object } # GeoJson
+
+      Viaje:
+        type: object
+        properties:
+          id: { type: string }
+          idUsuario: { type: string }
+          idMonopatin: { type: string }
+          fechaInicio: { type: string, format: date-time }
+          fechaFin: { type: string, format: date-time }
+          kmRecorridos: { type: number, format: double }
+          valorTotal: { type: number, format: double }
+
+      Tarifa:
+        type: object
+        properties:
+          id: { type: string }
+          fechaVigencia: { type: string, format: date }
+          valor: { type: number, format: double }
