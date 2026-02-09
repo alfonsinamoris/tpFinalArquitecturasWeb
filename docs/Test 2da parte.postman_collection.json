@@ -1,0 +1,1024 @@
+{
+	"info": {
+		"_postman_id": "ec8ca87b-9112-4e6e-9f6d-cf4033dfd8ee",
+		"name": "Test 2da parte",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24024189"
+	},
+	"item": [
+		{
+			"name": "PUNTO 4 (Funcionalidades administrador)",
+			"item": [
+				{
+					"name": "Reporte mantenimiento de uso",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbl90ZXN0Iiwicm9sZXMiOiJBRE1JTiIsImlhdCI6MTc2MzkzNjIxNCwiZXhwIjoxNzY0NTQxMDE0fQ.9-UOBG0gpgx_AOd_Wfb2jhlcTmGeVFylnPCXXCqT_hs",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/administrador/reportes/mantenimiento-uso?conPausas=false",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"administrador",
+								"reportes",
+								"mantenimiento-uso"
+							],
+							"query": [
+								{
+									"key": "conPausas",
+									"value": "false"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Anular cuenta",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbl90ZXN0Iiwicm9sZXMiOiJBRE1JTiIsImlhdCI6MTc2MzkzNjIxNCwiZXhwIjoxNzY0NTQxMDE0fQ.9-UOBG0gpgx_AOd_Wfb2jhlcTmGeVFylnPCXXCqT_hs",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/administrador/cuentas/anular/69238318c7dc1c7067f0b857",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"administrador",
+								"cuentas",
+								"anular",
+								"69238318c7dc1c7067f0b857"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Reportes top monopatines",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbl90ZXN0Iiwicm9sZXMiOiJBRE1JTiIsImlhdCI6MTc2MzkzNjIxNCwiZXhwIjoxNzY0NTQxMDE0fQ.9-UOBG0gpgx_AOd_Wfb2jhlcTmGeVFylnPCXXCqT_hs",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/administrador/reportes/top-monopatines?minViajes=1&year=2025",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"administrador",
+								"reportes",
+								"top-monopatines"
+							],
+							"query": [
+								{
+									"key": "minViajes",
+									"value": "1"
+								},
+								{
+									"key": "year",
+									"value": "2025"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Total facturado en un año",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbl90ZXN0Iiwicm9sZXMiOiJBRE1JTiIsImlhdCI6MTc2MzkzNjIxNCwiZXhwIjoxNzY0NTQxMDE0fQ.9-UOBG0gpgx_AOd_Wfb2jhlcTmGeVFylnPCXXCqT_hs",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/administrador/total-facturado?anio=2025&mesInicio=1&mesFin=12",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"administrador",
+								"total-facturado"
+							],
+							"query": [
+								{
+									"key": "anio",
+									"value": "2025"
+								},
+								{
+									"key": "mesInicio",
+									"value": "1"
+								},
+								{
+									"key": "mesFin",
+									"value": "12"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Usuarios que mas usan",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbl90ZXN0Iiwicm9sZXMiOiJBRE1JTiIsImlhdCI6MTc2MzkzNjIxNCwiZXhwIjoxNzY0NTQxMDE0fQ.9-UOBG0gpgx_AOd_Wfb2jhlcTmGeVFylnPCXXCqT_hs",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/administrador/usuarios-que-mas-usan?rol=USER&inicio=2025-01-01&fin=2025-12-31",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"administrador",
+								"usuarios-que-mas-usan"
+							],
+							"query": [
+								{
+									"key": "rol",
+									"value": "USER"
+								},
+								{
+									"key": "inicio",
+									"value": "2025-01-01"
+								},
+								{
+									"key": "fin",
+									"value": "2025-12-31"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Activar tarifa",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbl90ZXN0Iiwicm9sZXMiOiJBRE1JTiIsImlhdCI6MTc2MzkzNjIxNCwiZXhwIjoxNzY0NTQxMDE0fQ.9-UOBG0gpgx_AOd_Wfb2jhlcTmGeVFylnPCXXCqT_hs",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"valorComun\": 150,\r\n    \"valorPremium\": 100,\r\n    \"valorExtraPausa\": 50\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/administrador/ajuste?fechaActivacion=2025-11-01",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"administrador",
+								"ajuste"
+							],
+							"query": [
+								{
+									"key": "fechaActivacion",
+									"value": "2025-11-01"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Puntos A B C D E F"
+		},
+		{
+			"name": "PUNTO 4 (Funcionalidades de usuario)",
+			"item": [
+				{
+					"name": "Monopatines cercanos",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyX3Rlc3QiLCJyb2xlcyI6IlVTRVIiLCJpYXQiOjE3NjM5MzYxNjAsImV4cCI6MTc2NDU0MDk2MH0.SSFqLPJlJ2caQHtfNZY9e2EwJyHSZZm430-NoUmssUM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/usuarios/cercanos?lat=-37.32&lng=-59.13&radiokm=5",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"usuarios",
+								"cercanos"
+							],
+							"query": [
+								{
+									"key": "lat",
+									"value": "-37.32"
+								},
+								{
+									"key": "lng",
+									"value": "-59.13"
+								},
+								{
+									"key": "radiokm",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Reporte uso",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyX3Rlc3QiLCJyb2xlcyI6IlVTRVIiLCJpYXQiOjE3NjM5MzYxNjAsImV4cCI6MTc2NDU0MDk2MH0.SSFqLPJlJ2caQHtfNZY9e2EwJyHSZZm430-NoUmssUM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/usuarios/6914e611dd44076bd184eadc/reporteUso?fechaInicio=2025-10-01&fechaFin=2025-11-30&otrosUsuarios=false",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"usuarios",
+								"6914e611dd44076bd184eadc",
+								"reporteUso"
+							],
+							"query": [
+								{
+									"key": "fechaInicio",
+									"value": "2025-10-01"
+								},
+								{
+									"key": "fechaFin",
+									"value": "2025-11-30"
+								},
+								{
+									"key": "otrosUsuarios",
+									"value": "false"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cargar saldo",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyX3Rlc3QiLCJyb2xlcyI6IlVTRVIiLCJpYXQiOjE3NjM5MzYxNjAsImV4cCI6MTc2NDU0MDk2MH0.SSFqLPJlJ2caQHtfNZY9e2EwJyHSZZm430-NoUmssUM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/cuenta/cargarSaldo/6914de899e20d8326510f513?saldo=500&tokenPago=500",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"cuenta",
+								"cargarSaldo",
+								"6914de899e20d8326510f513"
+							],
+							"query": [
+								{
+									"key": "saldo",
+									"value": "500"
+								},
+								{
+									"key": "tokenPago",
+									"value": "500"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Puntos g h"
+		},
+		{
+			"name": "Tarifa",
+			"item": [
+				{
+					"name": "Crear una tarifa",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbl90ZXN0Iiwicm9sZXMiOiJBRE1JTiIsImlhdCI6MTc2MzkzNjIxNCwiZXhwIjoxNzY0NTQxMDE0fQ.9-UOBG0gpgx_AOd_Wfb2jhlcTmGeVFylnPCXXCqT_hs",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"valorComun\": 100,\r\n    \"valorPremium\": 150,\r\n    \"valorExtrapausa\": 50,\r\n    \"fechaActivacion\": \"2023-01-01\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/tarifas",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"tarifas"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Funcionalidades relacionadas con el MS Tarifa"
+		},
+		{
+			"name": "Parada",
+			"item": [
+				{
+					"name": "Crear parada",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbl90ZXN0Iiwicm9sZXMiOiJBRE1JTiIsImlhdCI6MTc2MzkzNjIxNCwiZXhwIjoxNzY0NTQxMDE0fQ.9-UOBG0gpgx_AOd_Wfb2jhlcTmGeVFylnPCXXCqT_hs",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"Campus Universitario\",\r\n    \"direccion\": \"Arroyo Seco\",\r\n    \"latitud\": -37.321,\r\n    \"longitud\": -59.082\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/paradas",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"paradas"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Funcionalidades del MS Parada"
+		},
+		{
+			"name": "Monopatin",
+			"item": [
+				{
+					"name": "Crear Monopatin",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbl90ZXN0Iiwicm9sZXMiOiJBRE1JTiIsImlhdCI6MTc2MzkzNjIxNCwiZXhwIjoxNzY0NTQxMDE0fQ.9-UOBG0gpgx_AOd_Wfb2jhlcTmGeVFylnPCXXCqT_hs",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"estado\": \"disponible\",\r\n    \"latitud\": -37.328,\r\n    \"longitud\": -59.137,\r\n    \"kmRecorridos\": 0,\r\n    \"tiempoUso\": 0,\r\n    \"idParadaUbicacion\": \"69237280382f562ada0466b0\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/monopatines",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"monopatines"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Funcionalidades del MS Monopatin"
+		},
+		{
+			"name": "Cuenta",
+			"item": [
+				{
+					"name": "Crear cuenta",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyX3Rlc3QiLCJyb2xlcyI6IlVTRVIiLCJpYXQiOjE3NjM5MzYxNjAsImV4cCI6MTc2NDU0MDk2MH0.SSFqLPJlJ2caQHtfNZY9e2EwJyHSZZm430-NoUmssUM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"fechaAlta\": \"2025-11-23\",\r\n    \"saldo\": 0,\r\n    \"estado\": true,\r\n    \"tipoCuenta\": \"PREMIUM\" \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/cuenta",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"cuenta"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cargar Saldo",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyX3Rlc3QiLCJyb2xlcyI6IlVTRVIiLCJpYXQiOjE3NjM5MzYxNjAsImV4cCI6MTc2NDU0MDk2MH0.SSFqLPJlJ2caQHtfNZY9e2EwJyHSZZm430-NoUmssUM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"fechaAlta\": \"2025-11-23\",\r\n    \"saldo\": 0,\r\n    \"estado\": true,\r\n    \"tipoCuenta\": \"BASICA\" \r\n}"
+						},
+						"url": {
+							"raw": "{{baseURL}}/cuenta/cargarSaldo/692373e865f70405be6e3636?saldo=1000&tokenPago=tokentest",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"cuenta",
+								"cargarSaldo",
+								"692373e865f70405be6e3636"
+							],
+							"query": [
+								{
+									"key": "saldo",
+									"value": "1000"
+								},
+								{
+									"key": "tokenPago",
+									"value": "tokentest"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Funcionalidades del MS Cuenta"
+		},
+		{
+			"name": "Viaje",
+			"item": [
+				{
+					"name": "Crear Viaje",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyX3Rlc3QiLCJyb2xlcyI6IlVTRVIiLCJpYXQiOjE3NjM5MzYxNjAsImV4cCI6MTc2NDU0MDk2MH0.SSFqLPJlJ2caQHtfNZY9e2EwJyHSZZm430-NoUmssUM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idParadaInicio\": \"6914db32ec85d825c7a73b2f\",\r\n    \"idTarifa\": \"6914e175ee26207f900fd425\",\r\n    \"idMonopatin\": \"6914dd00151fe41f81f1d109\", \r\n    \"idUsuario\": \"692397c8ab8d4348b1b37701\",\r\n    \"idCuenta\": \"692373e865f70405be6e3636\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/viajes/iniciar",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"viajes",
+								"iniciar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Finalizar viaje",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyX3Rlc3QiLCJyb2xlcyI6IlVTRVIiLCJpYXQiOjE3NjM5MzYxNjAsImV4cCI6MTc2NDU0MDk2MH0.SSFqLPJlJ2caQHtfNZY9e2EwJyHSZZm430-NoUmssUM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/viajes/finalizar/69239922a82b81575cc4bee8?idParadaFin=6914db59ec85d825c7a73b30&kmRecorridos=67.0",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"viajes",
+								"finalizar",
+								"69239922a82b81575cc4bee8"
+							],
+							"query": [
+								{
+									"key": "idParadaFin",
+									"value": "6914db59ec85d825c7a73b30"
+								},
+								{
+									"key": "kmRecorridos",
+									"value": "67.0"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Funcionalidades del MS Viaje"
+		},
+		{
+			"name": "Usuario",
+			"item": [
+				{
+					"name": "Crear usuario",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nombre\": \"usuarioPrueba\",\r\n  \"mail\": \"usuario@prueba.com\",\r\n  \"celular\": 11223344,\r\n  \"rol\": \"USER\",\r\n  \"contrasenia\": \"password123\",\r\n  \"cuentas\": [\"69248cc80972a21b4e5bcf16\"],\r\n  \"monopatines\": [],\r\n  \"viajes\": []\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/usuarios/crear",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"usuarios",
+								"crear"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Generar Token",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"nombre\": \"admin_test\",\r\n  \"mail\": \"admin@prueba.com\",\r\n  \"celular\": 11223344,\r\n  \"rol\": \"ADMIN\",\r\n  \"contrasenia\": \"password123\",\r\n  \"cuentas\": [],\r\n  \"monopatines\": [],\r\n  \"viajes\": []\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/autenticacion?username=admin_test&password=password123",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"autenticacion"
+					],
+					"query": [
+						{
+							"key": "username",
+							"value": "admin_test"
+						},
+						{
+							"key": "password",
+							"value": "password123"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "TOKEN_USER",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nombre\": \"admin_test\",\r\n  \"mail\": \"admin@prueba.com\",\r\n  \"celular\": 11223344,\r\n  \"rol\": \"ADMIN\",\r\n  \"contrasenia\": \"password123\",\r\n  \"cuentas\": [],\r\n  \"monopatines\": [],\r\n  \"viajes\": []\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/autenticacion?username=user_test&password=password123",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"autenticacion"
+							],
+							"query": [
+								{
+									"key": "username",
+									"value": "user_test"
+								},
+								{
+									"key": "password",
+									"value": "password123"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "Authorization",
+							"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyX3Rlc3QiLCJyb2xlcyI6IlVTRVIiLCJpYXQiOjE3NjM5MzYxNjAsImV4cCI6MTc2NDU0MDk2MH0.SSFqLPJlJ2caQHtfNZY9e2EwJyHSZZm430-NoUmssUM"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "191"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, no-store, max-age=0, must-revalidate"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "Expires",
+							"value": "0"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "0"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "no-referrer"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"token\": \"eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyX3Rlc3QiLCJyb2xlcyI6IlVTRVIiLCJpYXQiOjE3NjM5MzYxNjAsImV4cCI6MTc2NDU0MDk2MH0.SSFqLPJlJ2caQHtfNZY9e2EwJyHSZZm430-NoUmssUM\",\n    \"username\": \"user_test\"\n}"
+				},
+				{
+					"name": "TOKEN-ADMIN",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nombre\": \"admin_test\",\r\n  \"mail\": \"admin@prueba.com\",\r\n  \"celular\": 11223344,\r\n  \"rol\": \"ADMIN\",\r\n  \"contrasenia\": \"password123\",\r\n  \"cuentas\": [],\r\n  \"monopatines\": [],\r\n  \"viajes\": []\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/autenticacion?username=admin_test&password=password123",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"autenticacion"
+							],
+							"query": [
+								{
+									"key": "username",
+									"value": "admin_test"
+								},
+								{
+									"key": "password",
+									"value": "password123"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "Authorization",
+							"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbl90ZXN0Iiwicm9sZXMiOiJBRE1JTiIsImlhdCI6MTc2MzkzNjIxNCwiZXhwIjoxNzY0NTQxMDE0fQ.9-UOBG0gpgx_AOd_Wfb2jhlcTmGeVFylnPCXXCqT_hs"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "195"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, no-store, max-age=0, must-revalidate"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "Expires",
+							"value": "0"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "0"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "no-referrer"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"token\": \"eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbl90ZXN0Iiwicm9sZXMiOiJBRE1JTiIsImlhdCI6MTc2MzkzNjIxNCwiZXhwIjoxNzY0NTQxMDE0fQ.9-UOBG0gpgx_AOd_Wfb2jhlcTmGeVFylnPCXXCqT_hs\",\n    \"username\": \"admin_test\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Pruebas con chat",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c3VhcmlvQ29uQ3VlbnRhUHJlbWl1bSIsInJvbGVzIjoiVVNFUiIsImlhdCI6MTc2NDAwNTIzMSwiZXhwIjoxNzY0NjEwMDMxfQ.Nl25GiuFbMlit8hDWqqRhR2w1y0zV2Ue7Btf1yYOqWE",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "Traeme los monopatines que esten Disponibles",
+					"options": {
+						"raw": {
+							"language": "text"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8090/api/chat/consultar",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"api",
+						"chat",
+						"consultar"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "TOKEN_PRUEBA_CHAT",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/autenticacion?username=usuarioConCuentaPremium&password=password123",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"autenticacion"
+							],
+							"query": [
+								{
+									"key": "username",
+									"value": "usuarioConCuentaPremium"
+								},
+								{
+									"key": "password",
+									"value": "password123"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "Authorization",
+							"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c3VhcmlvQ29uQ3VlbnRhUHJlbWl1bSIsInJvbGVzIjoiVVNFUiIsImlhdCI6MTc2NDAwNTIzMSwiZXhwIjoxNzY0NjEwMDMxfQ.Nl25GiuFbMlit8hDWqqRhR2w1y0zV2Ue7Btf1yYOqWE"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "224"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, no-store, max-age=0, must-revalidate"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "Expires",
+							"value": "0"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "0"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "no-referrer"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"token\": \"eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c3VhcmlvQ29uQ3VlbnRhUHJlbWl1bSIsInJvbGVzIjoiVVNFUiIsImlhdCI6MTc2NDAwNTIzMSwiZXhwIjoxNzY0NjEwMDMxfQ.Nl25GiuFbMlit8hDWqqRhR2w1y0zV2Ue7Btf1yYOqWE\",\n    \"username\": \"usuarioConCuentaPremium\"\n}"
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "baseURL",
+			"value": "",
+			"type": "default"
+		}
+	]
+}

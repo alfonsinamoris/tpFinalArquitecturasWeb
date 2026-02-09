@@ -1,0 +1,747 @@
+{
+	"info": {
+		"_postman_id": "f49de041-7b36-495c-874a-875606df692c",
+		"name": "integrador_especial_P1",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24024189"
+	},
+	"item": [
+		{
+			"name": "Punto 4",
+			"item": [
+				{
+					"name": "Punto A",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/administrador/reportes/mantenimiento-uso?conPausas=false",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"administrador",
+								"reportes",
+								"mantenimiento-uso"
+							],
+							"query": [
+								{
+									"key": "conPausas",
+									"value": "false"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Punto B",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/administrador/cuentas/anular/6914dea89e20d8326510f515",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"administrador",
+								"cuentas",
+								"anular",
+								"6914dea89e20d8326510f515"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Punto C",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/administrador/reportes/top-monopatines?minViajes=1&year=2025",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"administrador",
+								"reportes",
+								"top-monopatines"
+							],
+							"query": [
+								{
+									"key": "minViajes",
+									"value": "1"
+								},
+								{
+									"key": "year",
+									"value": "2025"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Punto D",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/administrador/total-facturado?anio=2025&mesInicio=10&mesFin=11",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"administrador",
+								"total-facturado"
+							],
+							"query": [
+								{
+									"key": "anio",
+									"value": "2025"
+								},
+								{
+									"key": "mesInicio",
+									"value": "10"
+								},
+								{
+									"key": "mesFin",
+									"value": "11"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Punto E",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/administrador/usuarios-que-mas-usan?rol=USUARIO_COMUN&inicio=2025-01-01&fin=2025-12-31",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"administrador",
+								"usuarios-que-mas-usan"
+							],
+							"query": [
+								{
+									"key": "rol",
+									"value": "USUARIO_COMUN"
+								},
+								{
+									"key": "inicio",
+									"value": "2025-01-01"
+								},
+								{
+									"key": "fin",
+									"value": "2025-12-31"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Punto F",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": \"6914da50ee26207f900fd422\",\r\n  \"valorComun\": 200,\r\n  \"valorPremium\": 150,\r\n  \"valorExtraPausa\": 50\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/administrador/ajuste?fechaActivacion=2025-11-10",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"administrador",
+								"ajuste"
+							],
+							"query": [
+								{
+									"key": "fechaActivacion",
+									"value": "2025-11-10"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Punto G",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/usuarios/cercanos?lat=-14.32&lng=-67.13&radiokm=1.0",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"usuarios",
+								"cercanos"
+							],
+							"query": [
+								{
+									"key": "lat",
+									"value": "-14.32"
+								},
+								{
+									"key": "lng",
+									"value": "-67.13"
+								},
+								{
+									"key": "radiokm",
+									"value": "1.0"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Punto H",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/usuarios/6914e611dd44076bd184eadc/reporte-uso?fechaInicio=2025-10-01&fechaFin=2025-11-30&otrosUsuarios=true",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"usuarios",
+								"6914e611dd44076bd184eadc",
+								"reporte-uso"
+							],
+							"query": [
+								{
+									"key": "fechaInicio",
+									"value": "2025-10-01"
+								},
+								{
+									"key": "fechaFin",
+									"value": "2025-11-30"
+								},
+								{
+									"key": "otrosUsuarios",
+									"value": "true"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ABM Monopatin",
+			"item": [
+				{
+					"name": "Crear monopatin",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \r\n\"estado\": \"DISPONIBLE\",\r\n\"latitud\": -37.3199,\r\n\"longitud\": -59.1299,\r\n\"kmRecorridos\": 52.0,\r\n\"tiempoUso\": 500,\r\n\"idParadaUbicacion\": \"6914db32ec85d825c7a73b2f\"\r\n }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8082/monopatines",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"monopatines"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener todos los monopatines",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8082/monopatines",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"monopatines"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Dar de baja un monopatin",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8082/monopatines/6914dd06151fe41f81f1d10a",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"monopatines",
+								"6914dd06151fe41f81f1d10a"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Poner en matenimiento monopatin",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8082/monopatines/6914dd00151fe41f81f1d109/estado/mantenimiento",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"monopatines",
+								"6914dd00151fe41f81f1d109",
+								"estado",
+								"mantenimiento"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Ubicar monopatin en parada",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8083/paradas/6914db32ec85d825c7a73b2f/ubicar/6914dc30151fe41f81f1d100",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"paradas",
+								"6914db32ec85d825c7a73b2f",
+								"ubicar",
+								"6914dc30151fe41f81f1d100"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ABM Parada",
+			"item": [
+				{
+					"name": "Buscar parada",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8083/paradas/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"paradas",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar una parada",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8083/paradas/6914dbe9ec85d825c7a73b34",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"paradas",
+								"6914dbe9ec85d825c7a73b34"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear parada",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"direccion\": \"Av. Prueba 500\",\r\n    \"nombre\": \"Estación Prueba2\",\r\n    \"latitud\": -23.3200,\r\n    \"longitud\": -50.1300\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8083/paradas",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"paradas"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ABM Cuenta",
+			"item": [
+				{
+					"name": "Crear cuenta",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"monto\": 28904.0,\r\n    \"estado\": true,\r\n    \"fechaAlta\": \"2025-09-03\",\r\n    \"tipoCuenta\": \"BASICA\",\r\n    \"usuarios\": [\"6914ddfca4b6371cf59bce39\"]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8085/cuenta",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8085",
+							"path": [
+								"cuenta"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener todas las cuentas",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8085/cuenta",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8085",
+							"path": [
+								"cuenta"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cargar credito en una cuenta",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8085/cuenta/cargarSaldo/6914de899e20d8326510f513?saldo=500",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8085",
+							"path": [
+								"cuenta",
+								"cargarSaldo",
+								"6914de899e20d8326510f513"
+							],
+							"query": [
+								{
+									"key": "saldo",
+									"value": "500"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Anular una cuenta",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8085/cuenta/anular/6914de899e20d8326510f513",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8085",
+							"path": [
+								"cuenta",
+								"anular",
+								"6914de899e20d8326510f513"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ABM Viaje",
+			"item": [
+				{
+					"name": "Iniciar viaje",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idParadaInicio\": \"6914db32ec85d825c7a73b2f\",\r\n    \"idTarifa\": \"6914dad0ee26207f900fd423\",\r\n    \"idMonopatin\": \"6914dce5151fe41f81f1d106\", \r\n    \"idUsuario\": \"6914e611dd44076bd184eadc\",\r\n    \"idCuenta\": \"6914de899e20d8326510f513\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8084/viajes/iniciar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8084",
+							"path": [
+								"viajes",
+								"iniciar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Finalizar viaje",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8084/viajes/finalizar/6914e6682d01eb3e05bb3e65?idParadaFin=6914db32ec85d825c7a73b2f&kmRecorridos=67.0",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8084",
+							"path": [
+								"viajes",
+								"finalizar",
+								"6914e6682d01eb3e05bb3e65"
+							],
+							"query": [
+								{
+									"key": "idParadaFin",
+									"value": "6914db32ec85d825c7a73b2f"
+								},
+								{
+									"key": "kmRecorridos",
+									"value": "67.0"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ABM Tarifa",
+			"item": [
+				{
+					"name": "Crear una tarifa",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"valorComun\": 150,\r\n    \"valorPremium\":75,\r\n    \"valorExtrapausa\": 50    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8087/tarifas",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8087",
+							"path": [
+								"tarifas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Buscar una tarifa",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8087/tarifas/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8087",
+							"path": [
+								"tarifas",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Resgistrar cobro",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"fecha\": \"2025-11-10T17:00:00.000+00:00\", \r\n  \"viajeId\": \"6914e07ec26f120ac4aa2d04\", \r\n  \"usuarioId\": \"6914ddc9a4b6371cf59bce36\",\r\n  \"total\": 450.75 \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8086/facturas",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8086",
+							"path": [
+								"facturas"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ABM Usuario",
+			"item": [
+				{
+					"name": "Crear Usuario",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"Prueba\",\r\n    \"mail\": \"prueba@example.com\",\r\n    \"celular\":82683,\r\n    \"rol\": \"USUARIO_PREMIUM\",\r\n    \"cuentas\": [],\r\n    \"monopatines\": [\"6914dd06151fe41f81f1d10a\"],\r\n    \"viajes\": []\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/usuarios",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"usuarios"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

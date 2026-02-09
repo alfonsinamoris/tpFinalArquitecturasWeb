@@ -1,0 +1,60 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: apiGateway
+
+  cloud:
+    gateway:
+      routes:
+        - id: administrador
+          uri: http://localhost:8088
+          predicates:
+            - Path=/administrador/**
+
+        - id: cuenta
+          uri: http://localhost:8085
+          predicates:
+            - Path=/cuenta/**
+
+        - id: facturacion
+          uri: http://localhost:8086
+          predicates:
+            - Path=/facturas/**
+
+        - id: monopatin
+          uri: http://localhost:8082
+          predicates:
+            - Path=/monopatines/**
+
+        - id: parada
+          uri: http://localhost:8083
+          predicates:
+            - Path=/paradas/**
+
+        - id: tarifa
+          uri: http://localhost:8087
+          predicates:
+            - Path=/tarifas/**
+
+        - id: usuario
+          uri: http://localhost:8081
+          predicates:
+            - Path=/usuarios/**
+
+        - id: viaje
+          uri: http://localhost:8084
+          predicates:
+            - Path=/viajes/**
+
+        - id: autenticacion
+          uri: http://localhost:8080
+          predicates:
+            - Path=/autenticacion
+            - Path=/autenticacion/**
+
+        - id: chat
+          uri: http://localhost:8090
+          predicates:
+              - Path=/api/chat/**
